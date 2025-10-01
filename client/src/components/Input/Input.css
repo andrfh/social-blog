@@ -1,0 +1,18 @@
+.input {
+    border-bottom: solid 1px var(--grey);
+    border-top: 1px solid #00000000;
+    border-left: 1px solid #00000000;
+    border-right: 1px solid #00000000;
+    outline: none;
+    padding: 9px 0;
+    font-size: 0.875rem;
+    background: none;
+    width: 350px;
+    transition: all 0.3s;
+}
+
+.input:hover, .input:focus {
+    border-bottom: solid 1px var(--outline);
+
+}
+

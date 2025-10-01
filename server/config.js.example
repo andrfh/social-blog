@@ -1,0 +1,6 @@
+const config = {
+    "username": "your_username_for_db",
+    "password": "your_password_for_db"
+}
+
+export default config

@@ -1,0 +1,47 @@
+.header {
+    width: 100%;
+    background: var(--header);
+    aspect-ratio: 700 / 40;
+    max-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 30px 5px #00000080;
+    position: fixed;
+    top: 0;
+}
+
+.left_source, .right_source {
+    display: flex;
+    
+}
+
+.left_source > a, .right_source > a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.left_source > a:hover, .right_source > a:hover {
+    background: var(--primary);
+}
+
+.right_source > input {
+    background: var(--aside);
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    padding-left: 1.5rem;
+    width: 350px;
+}
+
+.active {
+    background: var(--primary);
+}
+
+.active:hover {
+    background: var(--primary-hover) !important;
+}

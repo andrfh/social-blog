@@ -1,0 +1,74 @@
+.main {
+    margin-top: 110px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main_input {
+    width: 50%;
+    aspect-ratio: 600 / 70;
+    margin: 30px 0;
+    background: var(--main_input);
+    border: 1px solid var(--main_input);
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0 0 10px 3px #00000080;
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.main_input > input {
+    background: var(--main_input);
+    border: 1px solid var(--main_input);
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+.main_input > button {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.story {
+    background: var(--photo);
+    border: 1px solid var(--photo);
+    transition: 0.3s all;
+}
+
+.story:hover {
+    opacity: 60%;
+}
+
+.send {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    transition: 0.3s all;
+}
+
+.send:hover {
+    opacity: 60%;
+}
+
+.main_input > button > img {
+    width: 30px;
+}
+
+.main_posts {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
