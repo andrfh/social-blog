@@ -2,9 +2,9 @@ import Post from "./Post.js"
 import fileService from "./fileService.js";
 
 class PostService {
-    async create(post, picture) {
+    async create(post, picture, userId) {
         const fileName = fileService.saveFile(picture);
-        const createdPost = await Post.create({...post, picture: fileName})
+        const createdPost = await Post.create({...post, picture: fileName, author: userId})
         return createdPost;
     }
 
@@ -21,17 +21,40 @@ class PostService {
         return post;
     }
 
-    async update(post) {
+    async update(post, userId) {
         if (!post._id) {
-            throw new Error('не указан ID')
+            throw new Error("Не указан ID");
         }
-        const updatedPost = await Post.findByIdAndUpdate(post._id, post, {new: true})
+
+        const existingPost = await Post.findById(post._id);
+        if (!existingPost) {
+            throw new Error("Пост не найден");
+        }
+
+        if (existingPost.author.toString() !== userId) {
+            throw new Error("Нет прав для редактирования этого поста");
+        }
+
+        const updatedPost = await Post.findByIdAndUpdate(
+            post._id,
+            post,
+            { new: true }
+        );
+
         return updatedPost;
     }
 
-    async delete(id) {
+    async delete(id, userId) {
         if (!id) {
             throw new Error('не указан ID')
+        }
+        const existingPost = await Post.findById(id);
+        if (!existingPost) {
+            throw new Error("Пост не найден");
+        }
+
+        if (existingPost.author.toString() !== userId) {
+            throw new Error("Нет прав для удаления этого поста");
         }
         const post = await Post.findByIdAndDelete(id)
         fileService.deleteFile(post.picture)

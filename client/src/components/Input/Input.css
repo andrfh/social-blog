@@ -12,7 +12,6 @@
 }
 
 .input:hover, .input:focus {
-    border-bottom: solid 1px var(--outline);
-
+    border-bottom: solid 1px var(--primary);
 }
 

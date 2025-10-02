@@ -4,10 +4,11 @@ import PostService from "./PostService.js";
 class PostController {
     async create(req, res) {
         try {
-            const post = await PostService.create(req.body, req.files.picture)
-            res.json(post)
+            const post = await PostService.create(req.body, req.files.picture, req.user.id);
+            return res.json(post);
         } catch (e) {
-            res.status(500).json(e) 
+            console.error(e);
+            res.status(500).json({ message: "Ошибка при создании поста" });
         }
     }
 
@@ -32,19 +33,19 @@ class PostController {
 
     async update(req, res) {
         try {
-            const updatedPost = await PostService.update(req.body)
+            const updatedPost = await PostService.update(req.body, req.user.id);
             return res.json(updatedPost);
         } catch (e) {
-            res.status(500).json(e)
+            return res.status(403).json({ message: e.message });
         }
     }
 
     async delete(req, res) {
         try {
-            const post = await PostService.delete(req.params.id)
+            const post = await PostService.delete(req.params.id, req.user.id)
             return res.json(post);
         } catch (e) {
-            res.status(500).json(e)
+            return res.status(403).json({ message: e.message });
         }
     }
 }

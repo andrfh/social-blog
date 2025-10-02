@@ -1,6 +1,7 @@
 const config = {
-    "username": "your_username_for_db",
-    "password": "your_password_for_db"
+    username: "your_username_for_db",
+    password: "your_password_for_db",
+    jwtSecret: "your_super_secret_key"
 }
 
 export default config

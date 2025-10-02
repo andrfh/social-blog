@@ -1,5 +1,4 @@
 import './Post.css'
-import post from '../../assets/post.jpg'
 
 function Post({picture, title, content, uuid}) {
   return (
