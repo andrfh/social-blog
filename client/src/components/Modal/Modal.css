@@ -1,0 +1,77 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: backdropFade 0.4s ease forwards;
+}
+
+/* окно */
+.modal-window {
+  background: var(--background);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 70%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  opacity: 0;
+  animation: modalEnter 0.5s ease forwards;
+}
+
+@keyframes modalEnter {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes backdropFade {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  max-height: 700px;
+  overflow-y: scroll;
+  scrollbar-color: #525252 var(--background);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: #666;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.modal-close:hover {
+  color: #858585;
+
+}
+

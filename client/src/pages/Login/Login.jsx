@@ -15,6 +15,7 @@ function Login() {
         event.preventDefault(); 
         axios.post(`${__API_ROOT__}/api/login`, loginData).then((resp) => { 
             console.log(resp.data)
+            localStorage.setItem('t', resp.data.token)
             navigate("/home")
         });
     } 
@@ -23,6 +24,7 @@ function Login() {
         event.preventDefault(); 
         axios.post(`${__API_ROOT__}/api/register`, registerData).then((resp) => { 
             console.log(resp.data)
+            localStorage.setItem('t', resp.data.token)
             navigate("/home")
         });
     }

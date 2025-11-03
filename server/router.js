@@ -9,6 +9,10 @@ const router = new Router()
 router.post("/register", SignUpController.signUp)
 router.post("/login", SignInController.signIn)
 
+router.post("/profile", authMiddleware, )
+router.get("/profile", authMiddleware, )
+router.get("/profile/:id", )
+
 router.post('/posts', authMiddleware, PostController.create)
 router.get('/posts', authMiddleware, PostController.getAll)
 router.get('/posts/:id', authMiddleware, PostController.getOne)

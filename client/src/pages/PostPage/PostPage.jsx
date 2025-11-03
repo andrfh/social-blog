@@ -1,21 +1,31 @@
 import './PostPage.css'
 import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
-import story from '../../assets/story.svg'
-import send from '../../assets/send.svg'
 import axios from 'axios';
 import { useParams} from 'react-router-dom';
 import { useState, useEffect } from 'react'
 
+
+
 function PostPage() {
     const { post_id } = useParams();
-
+    const [visible, setVisible] = useState(false)
     const [postData, setPostData] = useState()
+
     useEffect(() => {
-        axios.get(`${__API_ROOT__}/api/posts/${post_id}`).then((resp) => { 
+        let token = localStorage.getItem('t');
+        if (!token) {
+            navigate("/")
+        }
+        axios.get(`${__API_ROOT__}/api/posts/${post_id}`, {headers: {Authorization: `Bearer ${token}`}}).then((resp) => { 
             setPostData(resp.data)
-        });
-      }, []);
+        }).catch((error => {
+            if (error.status === 401 || 403 ) {
+                navigate("/")
+            }
+        }))
+
+    }, []);
 
     return (
         <div className="home">

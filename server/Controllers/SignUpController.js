@@ -22,7 +22,7 @@ class SignUpController {
       const token = jwt.sign(
         { id: user._id },
         config.jwtSecret,
-        { expiresIn: "15m" }
+        { expiresIn: "8h" }
       );
 
       res.json({ token, user: { id: user._id, login: user.login, name: user.name, surname: user.surname } });

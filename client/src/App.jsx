@@ -5,6 +5,7 @@ import PostList from './pages/PostList/PostList';
 import PostPage from './pages/PostPage/PostPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';  
 
+
 function App() {
   return (
      <BrowserRouter>
